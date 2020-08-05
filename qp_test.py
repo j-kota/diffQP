@@ -76,7 +76,12 @@ if __name__ == "__main__":
 
     b = numpy.array(  [6.0, 6.0]  ).T
 
-    theta = quadprog_solve_qp(P, 1000*q, G, h, A, b, None)
+    theta = quadprog_solve_qp(P, eps*q, G, h, A, b, None)
+
+    print("theta[0] = ")
+    print( theta[0] )
+    print("theta[1] = ")
+    print( theta[1] )
 
     sol_list = [ ( eps,quadprog_solve_qp(P, eps*q, G, h, A, b, None) ) for eps in numpy.linspace(0.0,2.0,100) ]
     x  = [  eps for (eps,q) in sol_list ]
